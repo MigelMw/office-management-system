@@ -1,0 +1,14 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.body{
+    background-image: url(../Images/bird.jpg);
+    background-size: cover;
+    position: relative;
+}
+
+.opacity{
+    background-color: black;
+    opacity: 0.3;
+}
