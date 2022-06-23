@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-
+    <script src="https://use.fontawesome.com/984f1e8b4b.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg "  style="background-color: #e3f2fd;">
@@ -20,7 +21,7 @@
           </button>
           <div class="collapse navbar-collapse mainNav"  id="navbarTogglerDemo01">
             <a class="navbar-brand" href="dashboard.html" style="margin-left: 20px;">
-                <img src="../Images/logo1.png" class="logo" alt="">
+                <img src="Images/logo1.png" class="logo" alt="">
             </a>
             
             <!-- <form class="d-flex" role="search">
@@ -34,7 +35,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                       <li><a class="dropdown-item" href="account.html" type="button">My Account</a></li>
-                      <li><a class="dropdown-item" href="dsettings.html" type="button">Settings</a></li>
+                      <li><a class="dropdown-item" href="settings.html" type="button">Settings</a></li>
                       <li><button class="dropdown-item" id="navLogout" type="button">Logout</button></li>
                     </ul>
                   </div>
@@ -53,16 +54,24 @@
 
         <!-- Sidenav start -->
         <div class="sideNav">         
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="dashboard.html"><i class="bi bi-speedometer"></i>  Dashboard</a>
+                </li>
+               
+                <li class="nav-item">
+                  <a class="nav-link " href="vendors.html"><i class="bi bi-bicycle"></i> Vendors</a>
+                </li>
 
+                <li class="nav-item">
+                    <a class="nav-link " href="inventory.html"> <i class="bi bi-card-checklist"></i> Inventory</a>
+                </li>
+            </ul>
             <hr>
             <p>Finance</p>
             <hr>
 
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="dashboard.html"><i class="bi bi-speedometer"></i>  Dashboard</a>
-                  </li>
-
                 <li class="nav-item">
                   <a class="nav-link" href="income.html"><i class="bi bi-wallet-fill"></i> Income</a>
                 </li>
@@ -78,7 +87,25 @@
                 </li>
             </ul>
             
-            
+            <hr>
+            <p>Human Resource</p>
+            <hr>
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="employees.html"> <i class="bi bi-person-badge-fill"></i> Employees</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="leave-mngt.html"> <i class="bi bi-easel-fill"></i> Leave Management</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " href="hr-settings.html"><i class="bi bi-sliders"></i> Settings</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="hr-reports.html"> <i class="bi bi-clipboard2-data-fill"></i> Reports</a>
+                </li>
+            </ul>
 
         </div>
 
@@ -86,46 +113,73 @@
 
         <!-- Main Sec start -->
         <div class="mainContSection">
-
-            <h3>Dashboard</h3>
-            <div>
-                <div class="theSnippets bg-warning" >
-                    <h6>Total Income this Month</h6>
-                    <h4>KES. 20,000</h4>
-                </div>
-    
-                <div class="theSnippets bg-success text-white" >
-                    <h6>Total Expense this month</h6>
-                    <h4>KES. 20,000</h4>
-                </div>
-                <div class="theSnippets bg-danger text-white" >
-                    <h6>Total Employees</h6>
-                    <h4>KES. 20,000</h4>
-                </div>
-                <div class="theSnippets bg-primary text-white" >
-                    <h6>Profit this Month</h6>
-                    <h4>KES. 20,000</h4>
-                </div>
+            <div class="topHead">
+                <h3>Inventory</h3>
+                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Item</button>
             </div>
 
-            <canvas id="myChart" class="myChart"></canvas>
-           
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Item name</th>
+                    <th scope="col">Item code</th>
+                    <th scope="col">Item description</th>
+                  </tr>
+                </thead>
+                <tbody id="Rows">
 
+                </tbody>
+              </table>
 
         </div>
         <!-- MainSec End -->
 
     </section>
 
-    
+    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Item</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <input type="text" class="form-control" placeholder="Item name" id="itemName"> <br>
+            <input  class="form-control" type="text" id="code"> <br>
+            <input type="text"  class="form-control" placeholder="Item Description" id="ItemDesc"><br>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="Save">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function create_random_string(string_length){
+        let random_string =''
+        let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz'
+
+        for(var i,i = 0; i < string_length; i++){
+            random_string +=characters.charAt(Math.floor(Math.random()*characters.length))
+        }
+        return random_string
+    }
+  </script>
+
+
+
+
     <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="../js/config.js"></script>
-    <script src="../js/dashboard.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="js/config.js"></script>
+    <script src="js/inventory.js"></script>
     
 </body>
 </html>

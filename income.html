@@ -118,7 +118,6 @@
                 <h3>Income</h3>
                 <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Income</button>
             </div>
-
             <table class="table">
                 <thead>
                   <tr>
@@ -154,14 +153,11 @@
         <div class="modal-body">
             <input type="number" class="form-control" placeholder="Amount" id="Amount"> <br>
             <input  class="form-control" type="datetime-local"> <br>
-            <input type="text"  class="form-control" placeholder="Income from" id="Person"><br>
+            <select name=""   class="form-control" id="Person">
+            </select> <br>
             <input type="text"  class="form-control" placeholder="Income Description" id="Incomedesc"> <br>
             <label for="" class="form-label" >Payment Method</label>
             <select name=""   class="form-control" id="Paymethod">
-                <option value="M-Pesa">M-Pesa</option>
-                <option value="Cash">Cash</option>
-                <option value="Cheque">Cheque</option>
-                <option value="Bank Transfers">Bank Transfers</option>
             </select>
         </div>
         <div class="modal-footer">

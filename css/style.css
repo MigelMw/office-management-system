@@ -112,7 +112,18 @@
 }
 
 .topHead{
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.sett1{
+    width: 50%;
+    height: 100%;
+}
+
+.sett2{
+    width: 50%;
+    height: 100%;
 }

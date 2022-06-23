@@ -52,8 +52,8 @@ firebase.auth().onAuthStateChanged((user)=>{
                     content += '<td>'+ IDnumber +'</td>';
                     content += '<td>'+ date +'</td>';
                     content += '<td>'+ Contract +'</td>';
-                    content += '<td>'+ Shift +'</td>';
                     content += '<td>'+ Department +'</td>';
+                    content += '<td>'+ Shift +'</td>';
                     content += '<td>'+"Ksh " + Salary +'</td>';
                 content += '</tr>'
             })

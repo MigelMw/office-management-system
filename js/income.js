@@ -25,8 +25,33 @@ firebase.auth().onAuthStateChanged((user)=>{
                 Incomedesc:Incomedesc,
                 timestamp:timestamp,
                 Paymethod:Paymethod
+            }).then(()=>{
+                window.location.reload();
             })
         }
+        firebase.firestore().collection("Paymethod").get().then((querySnapshot)=>{
+            let content = ''
+
+            querySnapshot.forEach((doc)=>{
+
+                let Paymethod = doc.data().Paymethod;
+
+                content += '<option value="'+ Paymethod+'">'+ Paymethod +'</option>'
+            })
+            $("#Paymethod").append(content)
+        })
+        firebase.firestore().collection("EmployeeCred").get().then((querySnapshot)=>{
+            let content = ''
+
+            querySnapshot.forEach((doc)=>{
+
+                let fullname = doc.data().fullname;
+
+                content += '<option value="'+fullname+'">'+ fullname +'</option>'
+            })
+            $("#Person").append(content)
+        })
+
 
         firebase.firestore().collection("Addincome").get().then((querySnapshot)=>{
 
